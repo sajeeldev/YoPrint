@@ -34,7 +34,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('user.login') }}">
+            <form method="POST" action="{{ route('auth.login') }}">
                 @csrf
 
                 <!-- Username/Email Input -->
@@ -100,7 +100,7 @@
 
                 <!-- Create Account Link -->
                 <p class="text-center text-sm text-gray-600">
-                    <a href="{{ route('signup') }}" class="text-blue-600 hover:underline cursor-pointer">Create
+                    <a href="{{ route('user.signUp') }}" class="text-blue-600 hover:underline cursor-pointer">Create
                         an account</a>
                 </p>
             </form>

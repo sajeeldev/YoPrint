@@ -28,7 +28,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('user.register') }}">
+            <form method="POST" action="{{ route('auth.register') }}">
                 @csrf
 
                 <!-- Name Input -->
@@ -102,7 +102,7 @@
 
                 <!-- Login Link -->
                 <p class="text-center text-sm text-gray-600">
-                    <a href="{{ route('signin') }}" class="text-blue-600 hover:underline cursor-pointer">I am already
+                    <a href="{{ route('user.signIn') }}" class="text-blue-600 hover:underline cursor-pointer">I am already
                         member</a>
                 </p>
             </form>

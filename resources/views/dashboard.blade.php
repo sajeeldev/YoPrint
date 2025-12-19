@@ -44,7 +44,7 @@
             </nav>
 
             <div class="absolute bottom-0 w-64 p-6">
-                <form method="POST" action="{{ route('user.logout') }}">
+                <form method="POST" action="{{ route('auth.logout') }}">
                     @csrf
                     <button type="submit" class="flex items-center w-full px-6 py-3 hover:bg-blue-700 hover:bg-opacity-50 rounded-lg transition duration-200 text-left">
                         <i class="fas fa-sign-out-alt w-6"></i>
@@ -80,7 +80,7 @@
                         </div>
 
                         <!-- Logout Button (Header) -->
-                        <form method="POST" action="{{ route('user.logout') }}">
+                        <form method="POST" action="{{ route('auth.logout') }}">
                             @csrf
                             <button type="submit" class="flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition duration-200">
                                 <i class="fas fa-sign-out-alt mr-2"></i>

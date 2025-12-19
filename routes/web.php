@@ -12,11 +12,21 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/user/signup', [UserController::class, 'Signup'])->name('signup');
-Route::get('/user/signin', [UserController::class, 'Signin'])->name('signin');
-
-Route::post('/user/login', [UserController::class, 'login'])->name('user.login');
-Route::post('/user/register', [UserController::class, 'register'])->name('user.register');
-Route::post('/user/logout', [UserController::class, 'logout'])->name('user.logout');
-
 Route::post('/upload/resume', [FileUploadController::class, 'uploadResume'])->name('upload.resume');
+
+Route::prefix('user')
+    ->name('user.')
+    ->group(function () {
+        Route::get('/signup', [UserController::class, 'signUp'])->name('signUp');
+        Route::get('/signin', [UserController::class, 'signIn'])->name('signIn');
+    });
+
+Route::prefix('auth')
+    ->name('auth.')
+    ->group(function () {
+        Route::post('register', [UserController::class, 'register'])->name('register');
+        Route::post('/login', [UserController::class, 'login'])->name('login');
+        Route::post('/logout', [UserController::class, 'logout'])
+        ->middleware('auth')
+        ->name('logout');
+});

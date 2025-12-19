@@ -11,7 +11,7 @@ use App\Http\Requests\Auth\RegisterRequest;
 
 class UserController extends Controller
 {
-    Public function Signup()
+    Public function signUp()
     {
         return view('Auth.register');
     }
@@ -19,13 +19,17 @@ class UserController extends Controller
     public function register(RegisterRequest $request)
     {
         $validated = $request->validated();
-
+        try {
+            $validated['password'] = bcrypt($validated['password']);
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Registration failed. Please try again.'])->withInput();
+        }
         User::create($validated);
 
-        return redirect()->route('user.login')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('user.signIn')->with('success', 'Registration successful. Please log in.');
     }
 
-    public function Signin()
+    public function signIn()
     {
         return view('Auth.login');
     }
