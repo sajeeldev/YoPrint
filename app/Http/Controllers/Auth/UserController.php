@@ -3,14 +3,31 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\FileUpload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
+
+    public function dashboard()
+    {
+        $this->files = FileUpload::where('user_id', user()->id)->get();
+        // dd($this->files);
+        foreach( $this->files as $file ) {
+            // $this->data['files'][] = $file;
+            $this->timeAgo = Carbon::parse($file->created_at)->diffForHumans();
+        }
+        // dd($timeAgo, $dateTime);
+
+        return view('dashboard', $this->data);
+    }
+
+
     Public function signUp()
     {
         return view('Auth.register');
@@ -26,7 +43,7 @@ class UserController extends Controller
         }
         User::create($validated);
 
-        return redirect()->route('user.signIn')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('signIn')->with('success', 'Registration successful. Please log in.');
     }
 
     public function signIn()
@@ -53,6 +70,6 @@ class UserController extends Controller
     {
         $request->session()->flush();
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }

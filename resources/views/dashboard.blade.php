@@ -14,82 +14,14 @@
     <div class="flex h-screen overflow-hidden">
 
         <!-- Sidebar -->
-        <aside class="w-64 bg-gradient-to-b from-blue-600 to-blue-800 text-white flex-shrink-0">
-            <div class="p-6">
-                <h2 class="text-2xl font-bold">Hire Nest</h2>
-                <p class="text-blue-200 text-sm">Dashboard</p>
-            </div>
-
-            <nav class="mt-6">
-                <a href="#" class="flex items-center px-6 py-3 bg-blue-700 bg-opacity-50 border-l-4 border-white">
-                    <i class="fas fa-home w-6"></i>
-                    <span class="ml-3">Dashboard</span>
-                </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-700 hover:bg-opacity-50 transition duration-200">
-                    <i class="fas fa-briefcase w-6"></i>
-                    <span class="ml-3">Jobs</span>
-                </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-700 hover:bg-opacity-50 transition duration-200">
-                    <i class="fas fa-file-alt w-6"></i>
-                    <span class="ml-3">Applications</span>
-                </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-700 hover:bg-opacity-50 transition duration-200">
-                    <i class="fas fa-user w-6"></i>
-                    <span class="ml-3">Profile</span>
-                </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-700 hover:bg-opacity-50 transition duration-200">
-                    <i class="fas fa-cog w-6"></i>
-                    <span class="ml-3">Settings</span>
-                </a>
-            </nav>
-
-            <div class="absolute bottom-0 w-64 p-6">
-                <form method="POST" action="{{ route('auth.logout') }}">
-                    @csrf
-                    <button type="submit" class="flex items-center w-full px-6 py-3 hover:bg-blue-700 hover:bg-opacity-50 rounded-lg transition duration-200 text-left">
-                        <i class="fas fa-sign-out-alt w-6"></i>
-                        <span class="ml-3">Logout</span>
-                    </button>
-                </form>
-            </div>
-        </aside>
+        
+        @include('layout.sidebar')
 
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden">
 
             <!-- Header -->
-            <header class="bg-white shadow-sm z-10">
-                <div class="flex items-center justify-between px-8 py-4">
-                    <div>
-                        <h1 class="text-2xl font-bold text-gray-800">Welcome Back, John!</h1>
-                        <p class="text-gray-600 text-sm">Here's what's happening with your job search today</p>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <button class="relative p-2 text-gray-600 hover:bg-gray-100 rounded-full transition duration-200">
-                            <i class="fas fa-bell text-xl"></i>
-                            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-                        </button>
-                        <div class="flex items-center space-x-3">
-                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=4F46E5&color=fff"
-                                 alt="Profile"
-                                 class="w-10 h-10 rounded-full">
-                            <div>
-                                <p class="text-sm font-semibold text-gray-800">John Doe</p>
-                                <p class="text-xs text-gray-500">john@example.com</p>
-                            </div>
-                        </div>
-
-                        <!-- Logout Button (Header) -->
-                        <form method="POST" action="{{ route('auth.logout') }}">
-                            @csrf
-                            <button type="submit" class="flex items-center px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition duration-200">
-                                <i class="fas fa-sign-out-alt mr-2"></i>
-                                Logout
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </header>
+            @include('layout.header')
 
             <!-- Main Content Area -->
             <main class="flex-1 overflow-y-auto p-8">
@@ -148,17 +80,17 @@
                 <!-- File Upload Section -->
                 <div class="bg-white rounded-xl shadow-md p-8 mb-8">
                     <div class="mb-6">
-                        <h2 class="text-xl font-bold text-gray-800 mb-2">Upload Your Resume</h2>
-                        <p class="text-gray-600 text-sm">Upload your resume or CV to apply for jobs quickly</p>
+                        <h2 class="text-xl font-bold text-gray-800 mb-2">Upload Your File</h2>
+                        <p class="text-gray-600 text-sm">Upload your file to apply for processing</p>
                     </div>
 
-                    <form action="{{ route('upload.resume') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('upload.csvfile') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center hover:border-blue-500 transition duration-200 cursor-pointer relative">
                             <input type="file"
-                                   name="resume"
+                                   name="csvfile"
                                    id="fileInput"
-                                   accept=".pdf,.doc,.docx"
+                                   accept=".csv"
                                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                                    onchange="displayFileName(this)">
 
@@ -167,7 +99,7 @@
                                     <i class="fas fa-cloud-upload-alt text-4xl text-blue-600"></i>
                                 </div>
                                 <h3 class="text-lg font-semibold text-gray-700 mb-2">Drop your file here or click to browse</h3>
-                                <p class="text-gray-500 text-sm mb-4">Supported formats: PDF, DOC, DOCX (Max 5MB)</p>
+                                <p class="text-gray-500 text-sm mb-4">Supported formats: CSV Only (Max 50MB)</p>
                                 <p id="fileName" class="text-blue-600 font-medium"></p>
                             </div>
                         </div>
@@ -181,8 +113,11 @@
                     </form>
                 </div>
 
+                {{-- Show File Record --}}
+                @include('partials.show_file')
+
                 <!-- Recent Applications -->
-                <div class="bg-white rounded-xl shadow-md p-8">
+                {{-- <div class="bg-white rounded-xl shadow-md p-8">
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-xl font-bold text-gray-800">Recent Applications</h2>
                         <a href="#" class="text-blue-600 hover:text-blue-700 text-sm font-medium">View All</a>
@@ -237,7 +172,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </main>
         </div>
@@ -249,6 +184,37 @@
             if (fileName) {
                 document.getElementById('fileName').textContent = `Selected: ${fileName}`;
             }
+        }
+
+        // Show error modal if there are errors
+        @if ($errors->any())
+            showErrorModal();
+        @endif
+
+        function showErrorModal() {
+            const errorMessages = @json($errors->all());
+            const modalHtml = `
+                <div id="errorModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-exclamation-circle text-red-600 text-2xl mr-3"></i>
+                            <h3 class="text-lg font-bold text-gray-800">Error</h3>
+                        </div>
+                        <div class="mb-4 text-gray-700">
+                            ${errorMessages.map(msg => `<p class="mb-2">• ${msg}</p>`).join('')}
+                        </div>
+                        <button onclick="closeErrorModal()" class="w-full px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition duration-200">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHtml);
+        }
+
+        function closeErrorModal() {
+            const modal = document.getElementById('errorModal');
+            if (modal) modal.remove();
         }
     </script>
 

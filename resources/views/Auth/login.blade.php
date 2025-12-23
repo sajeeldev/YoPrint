@@ -100,7 +100,7 @@
 
                 <!-- Create Account Link -->
                 <p class="text-center text-sm text-gray-600">
-                    <a href="{{ route('user.signUp') }}" class="text-blue-600 hover:underline cursor-pointer">Create
+                    <a href="{{ route('signUp') }}" class="text-blue-600 hover:underline cursor-pointer">Create
                         an account</a>
                 </p>
             </form>
