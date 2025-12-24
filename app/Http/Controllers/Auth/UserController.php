@@ -43,10 +43,10 @@ class UserController extends Controller
         }
         User::create($validated);
 
-        return redirect()->route('signIn')->with('success', 'Registration successful. Please log in.');
+        return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
     }
 
-    public function signIn()
+    public function loginPage()
     {
         return view('Auth.login');
     }

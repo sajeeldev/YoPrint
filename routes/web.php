@@ -14,7 +14,7 @@ Route::post('/upload/resume', [FileUploadController::class, 'uploadFile'])->name
 
 
 Route::get('/signup', [UserController::class, 'signUp'])->name('signUp');
-Route::get('/signin', [UserController::class, 'signIn'])->name('signIn');
+Route::get('/login', [UserController::class, 'loginPage'])->name('login');
 
 Route::prefix('auth')
     ->name('auth.')

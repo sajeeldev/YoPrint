@@ -42,7 +42,7 @@
                        class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl text-center">
                         Register
                     </a>
-                    <a href="{{ route('signIn') }}"
+                    <a href="{{ route('login') }}"
                        class="w-full sm:w-auto px-10 py-4 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm text-white font-semibold rounded-xl border-2 border-white border-opacity-50 shadow-lg transform transition-all duration-200 hover:scale-105 hover:shadow-xl text-center">
                         Login
                     </a>

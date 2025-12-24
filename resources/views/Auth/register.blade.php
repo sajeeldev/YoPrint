@@ -102,7 +102,7 @@
 
                 <!-- Login Link -->
                 <p class="text-center text-sm text-gray-600">
-                    <a href="{{ route('signIn') }}" class="text-blue-600 hover:underline cursor-pointer">I am already
+                    <a href="{{ route('login') }}" class="text-blue-600 hover:underline cursor-pointer">I am already
                         member</a>
                 </p>
             </form>
