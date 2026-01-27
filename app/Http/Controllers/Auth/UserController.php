@@ -18,6 +18,8 @@ class UserController extends Controller
     {
         $this->files = FileUpload::where('user_id', user()->id)->get();
         // dd($this->files);
+        $this->user = User::where('id', user()->id)->first();
+        // dd($user->name);
         foreach( $this->files as $file ) {
             // $this->data['files'][] = $file;
             $this->timeAgo = Carbon::parse($file->created_at)->diffForHumans();

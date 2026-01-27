@@ -11,7 +11,7 @@
                     <i class="fas fa-home w-6"></i>
                     <span class="ml-3">Dashboard</span>
                 </a>
-                <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-700 hover:bg-opacity-50 transition duration-200">
+                {{-- <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-700 hover:bg-opacity-50 transition duration-200">
                     <i class="fas fa-briefcase w-6"></i>
                     <span class="ml-3">Jobs</span>
                 </a>
@@ -26,7 +26,7 @@
                 <a href="#" class="flex items-center px-6 py-3 hover:bg-blue-700 hover:bg-opacity-50 transition duration-200">
                     <i class="fas fa-cog w-6"></i>
                     <span class="ml-3">Settings</span>
-                </a>
+                </a> --}}
             </nav>
 
             <div class="absolute bottom-0 w-64 p-6">

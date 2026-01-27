@@ -1,8 +1,8 @@
 <header class="bg-white shadow-sm z-10">
     <div class="flex items-center justify-between px-8 py-4">
         <div>
-            <h1 class="text-2xl font-bold text-gray-800">Welcome Back, John!</h1>
-            <p class="text-gray-600 text-sm">Here's what's happening with your job search today</p>
+            <h1 class="text-2xl font-bold text-gray-800">Welcome Back, {{ $user->name }}</h1>
+            <p class="text-gray-600 text-sm">Here's what's happening when you upload large CSV file</p>
         </div>
         <div class="flex items-center space-x-4">
             <button class="relative p-2 text-gray-600 hover:bg-gray-100 rounded-full transition duration-200">
@@ -13,8 +13,8 @@
                 <img src="https://ui-avatars.com/api/?name=John+Doe&background=4F46E5&color=fff" alt="Profile"
                     class="w-10 h-10 rounded-full">
                 <div>
-                    <p class="text-sm font-semibold text-gray-800">John Doe</p>
-                    <p class="text-xs text-gray-500">john@example.com</p>
+                    <p class="text-sm font-semibold text-gray-800">{{ $user->name }}</p>
+                    <p class="text-xs text-gray-500">{{ $user->email }}</p>
                 </div>
             </div>
 
