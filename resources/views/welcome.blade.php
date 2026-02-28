@@ -32,7 +32,7 @@
                         Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Yo Print</span>
                     </h1>
                     <p class="text-white text-opacity-90 text-lg md:text-xl">
-                        Your journey to the perfect career starts here
+                        Upload your CSV and watch YoPrint process it with ease
                     </p>
                 </div>
 
