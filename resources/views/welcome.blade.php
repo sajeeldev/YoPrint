@@ -48,22 +48,12 @@
                     </a>
                 </div>
 
-                <!-- Additional Features (Optional) -->
-                <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                    <div class="text-white">
-                        <div class="text-3xl mb-2">🎯</div>
-                        <p class="text-sm opacity-90">Find Your Dream Job</p>
-                    </div>
-                    <div class="text-white">
-                        <div class="text-3xl mb-2">🚀</div>
-                        <p class="text-sm opacity-90">Fast & Easy Process</p>
-                    </div>
-                    <div class="text-white">
-                        <div class="text-3xl mb-2">💼</div>
-                        <p class="text-sm opacity-90">Top Companies</p>
-                    </div>
+                <!-- Footer -->
+                <div class="mt-12 text-center">
+                    <p class="text-white text-opacity-70 text-sm">
+                        <i class="fas fa-heart text-red-400"></i> Made with love by SajeelurRehman
+                    </p>
                 </div>
-
             </div>
 
         </div>
