@@ -2,7 +2,7 @@
         <!-- Sidebar -->
         <aside class="w-64 bg-gradient-to-b from-blue-600 to-blue-800 text-white flex-shrink-0">
             <div class="p-6">
-                <h2 class="text-2xl font-bold">Hire Nest</h2>
+                <h2 class="text-2xl font-bold">Yo Print</h2>
                 <p class="text-blue-200 text-sm">Dashboard</p>
             </div>
 

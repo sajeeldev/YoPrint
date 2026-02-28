@@ -11,6 +11,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [UserController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 Route::post('/upload/resume', [FileUploadController::class, 'uploadFile'])->name('upload.csvfile');
+Route::get('/api/file-statuses', [FileUploadController::class, 'getFileStatuses'])->middleware(['auth'])->name('api.file-statuses');
 
 
 Route::get('/signup', [UserController::class, 'signUp'])->name('signUp');
@@ -22,6 +23,6 @@ Route::prefix('auth')
         Route::post('register', [UserController::class, 'register'])->name('register');
         Route::post('/login', [UserController::class, 'login'])->name('login');
         Route::post('/logout', [UserController::class, 'logout'])
-        ->middleware('auth')
-        ->name('logout');
-});
+            ->middleware('auth')
+            ->name('logout');
+    });

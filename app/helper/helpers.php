@@ -33,3 +33,15 @@ if (!function_exists('user')) {
     }
 
 }
+
+if (!function_exists('path')) {
+    
+    /*
+    * Return path to a given resource
+    *
+    */
+    function path($resource) {
+        return base_path($resource);
+    }
+
+}

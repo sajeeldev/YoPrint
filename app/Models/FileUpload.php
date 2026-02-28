@@ -22,9 +22,14 @@ class FileUpload extends Model
         'completed_at',
     ];
 
+    protected $casts = [
+        'started_at' => 'datetime',
+        'completed_at' => 'datetime',
+    ];
+
     public function getFileUrlAttribute()
     {
-        return asset('storage/' . self::FILE_PATH);
+        return asset('storage/' . self::FILE_PATH . $this->hashname);
     }
 
     public function user()
